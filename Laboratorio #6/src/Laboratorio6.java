@@ -55,6 +55,17 @@ public class Laboratorio6 extends javax.swing.JFrame {
         rb_libre = new javax.swing.JRadioButton();
         rb_ocupado = new javax.swing.JRadioButton();
         jButton1 = new javax.swing.JButton();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        sp_numero = new javax.swing.JSpinner();
+        jLabel14 = new javax.swing.JLabel();
+        sp_distancia = new javax.swing.JSpinner();
+        jLabel15 = new javax.swing.JLabel();
+        cb_lugares = new javax.swing.JComboBox<>();
+        jLabel16 = new javax.swing.JLabel();
+        cb_lugares1 = new javax.swing.JComboBox<>();
+        jButton2 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -256,6 +267,91 @@ public class Laboratorio6 extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Agregar Lugar", jPanel2);
 
+        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel12.setText("Agregar una Carretera");
+        jLabel12.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        jLabel13.setText("Numero");
+
+        sp_numero.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+
+        jLabel14.setText("Distancia");
+
+        jLabel15.setText("Punto de Inicio");
+
+        cb_lugares.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_lugaresActionPerformed(evt);
+            }
+        });
+
+        jLabel16.setText("Punto Final");
+
+        cb_lugares1.setModel(cb_lugares.getModel());
+
+        jButton2.setText("Guardar!");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap(174, Short.MAX_VALUE)
+                .addComponent(jLabel12)
+                .addGap(212, 212, 212))
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel13)
+                            .addComponent(jLabel14))
+                        .addGap(35, 35, 35)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(sp_numero, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE)
+                            .addComponent(sp_distancia))
+                        .addGap(113, 113, 113)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel15)
+                            .addComponent(jLabel16))
+                        .addGap(51, 51, 51)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cb_lugares, 0, 80, Short.MAX_VALUE)
+                            .addComponent(cb_lugares1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(220, 220, 220)
+                        .addComponent(jButton2)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel12)
+                .addGap(49, 49, 49)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13)
+                    .addComponent(sp_numero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel15)
+                    .addComponent(cb_lugares, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel14)
+                    .addComponent(sp_distancia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel16)
+                    .addComponent(cb_lugares1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(69, 69, 69)
+                .addComponent(jButton2)
+                .addContainerGap(71, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Agregar Carreteras", jPanel5);
+
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -406,19 +502,15 @@ public class Laboratorio6 extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "LLene todas las casias!");
                 } else {
                     lista.add(new Restaurante(cb_categoriarestaurante.getSelectedItem().toString(), (Integer) sp_calificacion.getValue(), tf_nombre.getText(), ta_direccion.getText(), (Integer) sp_seguridad.getValue()));
-                    JOptionPane.showMessageDialog(this, "Reustaurante guardada correctamente!");
                 }
                 break;
             case "Cancha":
                 if (tf_nombre.getText().isEmpty() || ta_direccion.getText().isEmpty()) {
                     JOptionPane.showMessageDialog(this, "LLene todas las casias!");
+                } else if (rb_libre.isSelected()) {
+                    lista.add(new Cancha(cb_categoriacancha.getSelectedItem().toString(), true, tf_nombre.getText(), ta_direccion.getText(), (Integer) sp_seguridad.getValue()));
                 } else {
-                    if (rb_libre.isSelected()) {
-                        lista.add(new Cancha(cb_categoriacancha.getSelectedItem().toString(), true, tf_nombre.getText(), ta_direccion.getText(), (Integer) sp_seguridad.getValue()));
-                    } else {
-                        lista.add(new Cancha(cb_categoriacancha.getSelectedItem().toString(), false, tf_nombre.getText(), ta_direccion.getText(), (Integer) sp_seguridad.getValue()));
-                    }
-                    JOptionPane.showMessageDialog(this, "Cancha guardada correctamente!");
+                    lista.add(new Cancha(cb_categoriacancha.getSelectedItem().toString(), false, tf_nombre.getText(), ta_direccion.getText(), (Integer) sp_seguridad.getValue()));
                 }
                 break;
             case "Casa":
@@ -426,17 +518,18 @@ public class Laboratorio6 extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "LLene todas las casias!");
                 } else {
                     lista.add(new Casa(tf_nombre.getText(), ta_direccion.getText(), (Integer) sp_seguridad.getValue()));
-                    JOptionPane.showMessageDialog(this, "Casa guardada correctamente!");
                 }
                 break;
         }
+        JOptionPane.showMessageDialog(this, "Cancha guardada correctamente!");
+        cb_lugares.addItem(lista.get(lista.size() - 1).toString());
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void cb_lugarItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_lugarItemStateChanged
         if (evt.getStateChange() == 2) {
+            DefaultTableModel m = new DefaultTableModel();
             switch (cb_lugar.getSelectedItem().toString()) {
                 case "Restaurante":
-                    DefaultTableModel m = new DefaultTableModel();
                     m.addColumn("Nombre");
                     m.addColumn("Dirección");
                     m.addColumn("Seguridad");
@@ -451,42 +544,72 @@ public class Laboratorio6 extends javax.swing.JFrame {
                             m.addRow(newrow);
                         }
                     }
-                    jTable1.setModel(m);
                     break;
                 case "Cancha":
-                    DefaultTableModel n = new DefaultTableModel();
-                    n.addColumn("Nombre");
-                    n.addColumn("Dirección");
-                    n.addColumn("Seguridad");
-                    n.addColumn("Entradas");
-                    n.addColumn("Salida");
-                    n.addColumn("Categoria");
-                    n.addColumn("Estado");
-                    Object[] nuevarow1;
+                    m.addColumn("Nombre");
+                    m.addColumn("Dirección");
+                    m.addColumn("Seguridad");
+                    m.addColumn("Entradas");
+                    m.addColumn("Salida");
+                    m.addColumn("Categoria");
+                    m.addColumn("Estado");
                     for (Lugar lugar : lista) {
                         if (lugar instanceof Cancha) {
                             Object[] newrow1 = {lugar.getNombre(), lugar.getDireccion(), lugar.getSeguridad(), lugar.listEntrada(), lugar.getSalida().toString(), ((Cancha) lugar).getCategoria(), ((Cancha) lugar).EstadotoString()};
-                            n.addRow(newrow1);
+                            m.addRow(newrow1);
                         }
                     }
-                    jTable1.setModel(n);
                     break;
                 case "Carretera":
                     DefaultTableModel o = new DefaultTableModel();
-                    o.addColumn("Numero");
-                    o.addColumn("Distancia");
-                    o.addColumn("Inicio");
-                    o.addColumn("Fin");
-                    Object[] nuevarow2;
+                    m.addColumn("Numero");
+                    m.addColumn("Distancia");
+                    m.addColumn("Inicio");
+                    m.addColumn("Fin");
                     for (Carretera lugar : lista2) {
-                            Object[] newrow2 = {lugar.getNumero(), lugar.getDistancia(), lugar.getInicio().toString(), lugar.getFin().toString()};
-                            o.addRow(newrow2);
+                        Object[] newrow2 = {lugar.getNumero(), lugar.getDistancia(), lugar.getInicio().toString(), lugar.getFin().toString()};
+                        m.addRow(newrow2);
                     }
-                    jTable1.setModel(o);
                     break;
             }
+            jTable1.setModel(m);
         }
     }//GEN-LAST:event_cb_lugarItemStateChanged
+
+    private void cb_lugaresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_lugaresActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cb_lugaresActionPerformed
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        boolean unico = true;
+        for (Carretera lugar : lista2) {
+            if (lugar.getNumero() == (Integer) sp_numero.getValue()) {
+                unico = false;
+            }
+        }
+        if (unico) {
+            boolean salida = true;
+            for (Lugar lugar : lista) {
+                if (!lista.get(lista.indexOf(lugar)).getSalida().toString().equals("0")) {
+                    salida = false;
+                }
+            }
+            if (salida) {
+                if (cb_lugares.getSelectedIndex()!=cb_lugares1.getSelectedIndex()) {
+                    lista2.add(new Carretera((Integer) sp_numero.getValue(), (Integer) sp_distancia.getValue(), lista.get(cb_lugares.getSelectedIndex()), lista.get(cb_lugares1.getSelectedIndex())));
+                    lista.get(cb_lugares.getSelectedIndex()).setSalida(lista2.get(lista2.size() - 1));
+                    lista.get(cb_lugares1.getSelectedIndex()).addEntrada(lista2.get(lista2.size() - 1));
+                    JOptionPane.showMessageDialog(this, "La Carretera a sido agregada correctamente.");
+                }else{
+                    JOptionPane.showMessageDialog(this, "El lugar de inicio y salida no pueden ser los mismos.");
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "El Lugar ya tiene una salida.");
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "El numero ya fue usado.");
+        }
+    }//GEN-LAST:event_jButton2MouseClicked
 
     /**
      * @param args the command line arguments
@@ -528,11 +651,19 @@ public class Laboratorio6 extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cb_categoriacancha;
     private javax.swing.JComboBox<String> cb_categoriarestaurante;
     private javax.swing.JComboBox<String> cb_lugar;
+    private javax.swing.JComboBox<String> cb_lugares;
+    private javax.swing.JComboBox<String> cb_lugares1;
     private javax.swing.JComboBox<String> cb_tipo;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -545,6 +676,7 @@ public class Laboratorio6 extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
@@ -552,10 +684,12 @@ public class Laboratorio6 extends javax.swing.JFrame {
     private javax.swing.JRadioButton rb_libre;
     private javax.swing.JRadioButton rb_ocupado;
     private javax.swing.JSpinner sp_calificacion;
+    private javax.swing.JSpinner sp_distancia;
+    private javax.swing.JSpinner sp_numero;
     private javax.swing.JSpinner sp_seguridad;
     private javax.swing.JTextArea ta_direccion;
     private javax.swing.JTextField tf_nombre;
     // End of variables declaration//GEN-END:variables
-ArrayList<Lugar> lista = new ArrayList();
+    ArrayList<Lugar> lista = new ArrayList();
     ArrayList<Carretera> lista2 = new ArrayList();
 }

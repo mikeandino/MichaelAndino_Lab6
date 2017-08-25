@@ -71,6 +71,6 @@ public class Lugar {
 
     @Override
     public String toString() {
-        return "Lugar{" + "nombre=" + nombre + ", direccion=" + direccion + ", seguridad=" + seguridad + ", entrada=" + entrada + ", salida=" + salida + '}';
+        return nombre;
     }
 }
