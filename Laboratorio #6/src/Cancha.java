@@ -24,13 +24,21 @@ public class Cancha extends Lugar{
         return estado;
     }
 
+    public String EstadotoString(){
+        if (estado) {
+            return "Libre";
+        }else{
+            return "Ocupado";
+        }
+    }
+    
     public void setEstado(boolean estado) {
         this.estado = estado;
     }
 
     @Override
     public String toString() {
-        return "Cancha{" + "categoria=" + categoria + ", estado=" + estado + '}';
+        return nombre;
     }
     
 }

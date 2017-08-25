@@ -1,8 +1,10 @@
+
 class Carretera {
+
     private int numero;
     private double distancia;
-    private Lugar inicio; 
-    private Lugar fin; 
+    private Lugar inicio;
+    private Lugar fin;
 
     public Carretera() {
     }
@@ -44,5 +46,10 @@ class Carretera {
 
     public void setFin(Lugar fin) {
         this.fin = fin;
+    }
+
+    @Override
+    public String toString() {
+        return "" + numero;
     }
 }

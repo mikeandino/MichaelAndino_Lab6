@@ -6,7 +6,7 @@ public class Lugar {
     protected String direccion;
     protected int seguridad;
     protected ArrayList<Carretera> entrada = new ArrayList();
-    protected Carretera salida;
+    protected Carretera salida = new Carretera();
 
     public Lugar() {
     }
@@ -43,6 +43,14 @@ public class Lugar {
 
     public ArrayList<Carretera> getEntrada() {
         return entrada;
+    }
+    
+    public String listEntrada(){
+        String lugares="";
+        for (Carretera carretera : entrada) {
+            lugares+=""+carretera.toString()+"\n";
+        }
+        return lugares;
     }
     
     public void addEntrada(Carretera a){
