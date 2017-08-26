@@ -33,6 +33,8 @@ public class Laboratorio6 extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         buttonGroup1 = new javax.swing.ButtonGroup();
+        popup = new javax.swing.JPopupMenu();
+        Eliminar = new javax.swing.JMenuItem();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -84,6 +86,14 @@ public class Laboratorio6 extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 100, Short.MAX_VALUE)
         );
+
+        Eliminar.setText("jMenuItem1");
+        Eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EliminarActionPerformed(evt);
+            }
+        });
+        popup.add(Eliminar);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -368,6 +378,11 @@ public class Laboratorio6 extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jTable1);
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -611,6 +626,17 @@ public class Laboratorio6 extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton2MouseClicked
 
+    private void EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarActionPerformed
+        
+    }//GEN-LAST:event_EliminarActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        if (evt.isMetaDown()) {
+            popup.show(evt.getComponent(), evt.getX(), evt.getY());
+            
+        }
+    }//GEN-LAST:event_jTable1MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -647,6 +673,7 @@ public class Laboratorio6 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem Eliminar;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> cb_categoriacancha;
     private javax.swing.JComboBox<String> cb_categoriarestaurante;
@@ -681,6 +708,7 @@ public class Laboratorio6 extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JPopupMenu popup;
     private javax.swing.JRadioButton rb_libre;
     private javax.swing.JRadioButton rb_ocupado;
     private javax.swing.JSpinner sp_calificacion;
